@@ -6,17 +6,36 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     public Item[] queue;
     
     public RandomizedQueue() {
-        count = 0;
-        length = 1;
+        this.count = 0;
+        this.length = 1;
         this.queue = (Item[]) new Object[this.length];
-    }                 
+    } 
+    
     public boolean isEmpty() {
         return this.count == 0;
-    }                 
+    }
+    
     public int size() {
         return this.count;
-    }                        
-//   public void enqueue(Item item)           
+    } 
+    
+    public Item getItem(int index) {
+        return this.queue[index];
+    }
+    
+    public void enqueue(Item item) {       
+        queue[this.count] = item;
+        count++;
+        if(this.length == this.count) {
+            this.length = 2*this.length;
+            Item[] expandedQueue = (Item[]) new Object[this.length];
+            for(int i = 0; i < size(); i++) {
+                expandedQueue[i] = this.queue[i];
+            }
+            this.queue = expandedQueue;
+        }
+        
+    }           
 //   public Item dequeue()                    
 //   public Item sample() 
       
