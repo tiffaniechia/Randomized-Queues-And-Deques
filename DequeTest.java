@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 public class DequeTest {
     Deque<String> deque;
-    Deque<String> addedDeque;
     
     @Before
     public void setUp() {
