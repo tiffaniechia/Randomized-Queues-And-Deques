@@ -33,11 +33,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                 expandedQueue[i] = this.queue[i];
             }
             this.queue = expandedQueue;
-        }
-        
+        }   
     }           
-//   public Item dequeue()                    
-//   public Item sample() 
+//   public Item dequeue()
+    
+    public Item sample() {
+        int randomIndex = StdRandom.uniform(this.count +1);
+        return this.getItem(randomIndex);
+    } 
       
     public Iterator<Item> iterator() {
         return null;

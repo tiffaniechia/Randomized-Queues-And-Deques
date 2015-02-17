@@ -23,7 +23,6 @@ public class RandomizedQueueTest{
         assertEquals(2, randomizedQueue.length);
         assertEquals(item, randomizedQueue.getItem(0));
         assertEquals(null, randomizedQueue.getItem(1));
-        assertEquals(null, randomizedQueue.getItem(2));
     }
     
 }
