@@ -34,11 +34,27 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             }
             this.queue = expandedQueue;
         }   
-    }           
-//   public Item dequeue()
+    } 
+ 
+    public Item dequeue() {
+        int randomIndex = StdRandom.uniform(this.count);
+        Item result = this.queue[randomIndex];
+        this.queue[randomIndex] = this.queue[this.count];
+        this.queue[this.count] = null;
+        count--;
+        if(this.length/4 == this.count) {
+            this.length = this.length/2;
+            Item[] contractedQueue = (Item[]) new Object[this.length];
+            for(int i = 0; i < size(); i++) {
+                contractedQueue[i] = this.queue[i];
+            } 
+            this.queue = contractedQueue;
+        }
+        return result;
+    }
     
     public Item sample() {
-        int randomIndex = StdRandom.uniform(this.count +1);
+        int randomIndex = StdRandom.uniform(this.count);
         return this.getItem(randomIndex);
     } 
       
